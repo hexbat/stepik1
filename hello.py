@@ -4,6 +4,6 @@ def wsgi_application(environ, start_response):
   if '?' in qs:
     qs = qs.split('?')[1]
   body = '\n'.join(qs.split('&'))
-  headers = [('Content-type','text/plain'),('Content-Length', str(len(body)))]         
+  headers = [('Content-Type','text/plain'),('Content-Length', str(len(body)))]         
   start_response(status, headers)
   return [body]
