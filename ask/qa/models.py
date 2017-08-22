@@ -15,7 +15,7 @@ class Question(models.Model):
     likes = models.ManyToManyField(User, related_name='question_like_user')
 
 
-class QuestionMnager(models.Manager):
+class QuestionManager(models.Manager):
     def new(self):
         return Question.objects.order_by('added_at').desc()
 
