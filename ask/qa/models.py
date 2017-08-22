@@ -7,10 +7,10 @@ from django.contrib.auth.models import User
 
 
 class QuestionManager(models.Manager):
-    def resent_questions(self):
+    def new(self):
         return self.order_by('-added_at')
 
-    def popular_questions(self):
+    def popular(self):
         return self.order_by('-rating')
 
 
