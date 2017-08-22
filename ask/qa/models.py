@@ -17,10 +17,12 @@ class Question(models.Model):
 
 class QuestionManager(models.Manager):
     def new(self):
-        return Question.objects.order_by('added_at').desc()
+        question_list = Question.objects.all().order_by('-id')
+        return question_list
 
     def popular(self):
-        return Question.objects.order_by('rating').desc()
+        question_list = Question.objects.all().order_by('-rating')
+        return question_list
 
 
 class Answer(models.Model):
