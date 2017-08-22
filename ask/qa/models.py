@@ -9,10 +9,10 @@ from django.contrib.auth.models import User
 class Question(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()
-    added_at = models.DateTimeField()
-    rating = models.IntegerField()
-    author = models.ForeignKey(User, default='x', null=True, on_delete=models.SET_NULL, related_name='%(class)s_author')
-    likes = models.ManyToManyField(User, related_name='%(class)s_likes')
+    added_at = models.DateTimeField(blank=True, auto_now_add=True)
+    rating = models.IntegerField(default=0)
+    author = models.ForeignKey(User, default='x')
+    likes = models.ManyToManyField(User, related_name='question_like_user')
 
     def QuestionMnager(self):
         return Question.objects.all()
@@ -26,9 +26,9 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField()
-    added_at = models.DateTimeField()
+    added_at = models.DateTimeField(blank=True, auto_now_add=True)
     question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
-    author = models.ForeignKey(User, default='x', null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, default='x', on_delete=models.SET_NULL)
 
 
 class Likes(models.Model):
