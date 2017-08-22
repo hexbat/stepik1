@@ -14,9 +14,8 @@ class Question(models.Model):
     author = models.ForeignKey(User, default='x')
     likes = models.ManyToManyField(User, related_name='question_like_user')
 
-    def QuestionMnager(self):
-        return Question.objects.all()
 
+class QuestionMnager(models.Manager):
     def new(self):
         return Question.objects.order_by('added_at').desc()
 
