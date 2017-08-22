@@ -27,8 +27,8 @@ class Question(models.Model):
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(blank=True, auto_now_add=True)
-    question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
-    author = models.ForeignKey(User, default='x', on_delete=models.SET_NULL)
+    question = models.ForeignKey(Question)
+    author = models.ForeignKey(User, default='x')
 
 
 class Likes(models.Model):
