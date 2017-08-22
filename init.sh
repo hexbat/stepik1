@@ -1,4 +1,4 @@
-sudo apt-get install python-django
+sudo apt-get install python-django mysql-server-5.5
 sudo rm /etc/nginx/sites-enabled/*
 sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
 sudo /etc/init.d/nginx restart
@@ -10,6 +10,9 @@ sudo ln -s /home/box/web/etc/guni_ask.conf   /etc/gunicorn.d/ask
 cd ~/web/ask
 #gunicorn --bind=0.0.0.0:8000 ask.wsgi:application
 #sudo /etc/init.d/gunicorn restart
-#sudo /etc/init.d/mysql start
+sudo /etc/init.d/mysql start
+mysql -u root < ~/web/ask.sql
+python ~/web/ask/manage.py makemigrations qa
+python ~/web/ask/manage.py migrate
 chmod +x manage.py
 
