@@ -1,0 +1,4 @@
+create database ask;
+CREATE USER 'ask'@'%' IDENTIFIED BY PASSWORD 'askpassword';
+GRANT ALL PRIVILEGES ON ask.* TO 'ask'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
