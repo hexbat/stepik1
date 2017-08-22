@@ -11,7 +11,7 @@ class Question(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField()
     rating = models.IntegerField()
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='%(class)s_author')
+    author = models.ForeignKey(User, default='x', null=True, on_delete=models.SET_NULL, related_name='%(class)s_author')
     likes = models.ManyToManyField(User, related_name='%(class)s_likes')
 
     def QuestionMnager(self):
@@ -28,7 +28,7 @@ class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField()
     question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, default='x', null=True, on_delete=models.SET_NULL)
 
 
 class Likes(models.Model):
