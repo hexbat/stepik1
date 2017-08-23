@@ -40,4 +40,3 @@ class Likes(models.Model):
         User,
         related_name="like_user"
     )
-
