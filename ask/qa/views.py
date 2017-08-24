@@ -16,6 +16,7 @@ def test(request, *args, **kwargs):
 
 @require_GET
 def index(request, *args, **kwargs):
+
     list = Question.objects.order_by('-id')
     # limit = request.GET.get('limit', 10)
     page = request.GET.get('page', 1)
@@ -49,7 +50,7 @@ def popular(request, *args, **kwargs):
 
 @require_GET
 def question(request, question_id):
-    """POST and GET methods needed"""
+    return Http404
     q = get_object_or_404(Question, id=question_id)
     a = q.answer_set.all()
     context = {'question': q, 'answers': a}
