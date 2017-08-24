@@ -1,7 +1,9 @@
 {% extends "qa/base.html" %}
 <!--<a href="{% url 'question_details' question.id %}"> -->
+{% block title %} {{ block.super }} Questions list {% endblock %}
 {% block list %}
     {% if questions %}
+        index template
         <ul>
             {% for question in questions %}
                 <li>
