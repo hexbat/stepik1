@@ -1,16 +1,35 @@
-{% extends 'qa/base.html' %}
+{% extends "qa/base.html" %}
 
-{% block title %}
-{{ block.super }} New Questions - Page {{ questions.number }}{{ page }}
-{% endblock %}
+{% block list %}
+    {% if questions %}
+        <ul>
+            {% for question in questions %}
+                <li>
+                    <a href="{{ question.get_url }}">
+                    <!--<a href="{% url 'question_details' question.id %}"> -->
+                        {{ question }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div>
+        <span>
+            {% if page.has_previous %}
+                <a href="?page={{ page.previous_page_number }}">
+                    previous
+                </a>
+            {% endif %}
 
-{% block content %}
-{% for question in questions %}
-  <h3>{{ question.title }}</h3>
-  {% with answers=question.answer_set.count %}
-  <p><a href="/question/{{ question.id }}/">
-     {{ answers }} Answer(s)</a>
-  </p>
-  {% endwith %}
-{% endfor %}
+            <span>
+                Page {{ page.number }} of {{ page.paginator.num_pages }}
+            </span>
+
+            {% if page.has_next %}
+                <a href="?page={{ page.next_page_number }}">
+                    next
+                </a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}

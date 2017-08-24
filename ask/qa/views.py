@@ -16,20 +16,13 @@ def test(request, *args, **kwargs):
 
 @require_GET
 def index(request, *args, **kwargs):
-    question_list = Question.objects.order_by('-id')
-    try:
-        limit = request.GET.get('limit', 10)
-    except ValueError:
-        limit = 10
-    paginator = Paginator(question_list, limit)
-    try:
-        page = request.GET.get('page', 1)
-    except ValueError:
-        raise Http404
+    list = Question.objects.order_by('-id')
+    # limit = request.GET.get('limit', 10)
+    page = request.GET.get('page', 1)
+    questions = Question.objects.pagination(list, page)
     context = {
-        'questions': page,
-        'paginator': paginator,
-        'limit': limit,
+        'page':questions,
+        'page': page
     }
     return render(request, 'qa/index.html', context)
 
