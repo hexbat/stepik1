@@ -54,7 +54,7 @@ ROOT_URLCONF = 'ask.urls'
 TEMPLATE_DEBUG = True
 TEMPLATES = [
     {
-        'TEMPLATE_DEBUG': True,
+        'DEBUG': True,
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
