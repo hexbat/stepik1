@@ -52,6 +52,6 @@ def popular(request, *args, **kwargs):
 def question(request, question_id):
     # return Http404
     q = Question.objects.filter(id=question_id)
-    a = q.answer_set.all()
+    a = q.answer.all()[:]
     context = {'question': q, 'answers': a}
     return render(request, 'qa/question.html', context)
