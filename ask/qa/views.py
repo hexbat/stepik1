@@ -21,7 +21,7 @@ def index(request, *args, **kwargs):
     page = request.GET.get('page', 1)
     questions = Question.objects.pagination(list, page)
     context = {
-        'page':questions,
+        'questions':questions,
         'page': page
     }
     return render(request, 'qa/index.html', context)
