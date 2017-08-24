@@ -4,7 +4,7 @@
 {{ block.super }} Popular Questions - Page {{ questions.number }}{{ page }}
 {% endblock %}
 
-{% block content %}
+{% block list %}
 {% for question in questions %}
   <h3>{{ question.title }}</h3>
   {% with answers=question.answer_set.count %}
