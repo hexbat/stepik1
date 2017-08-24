@@ -50,7 +50,7 @@ def popular(request, *args, **kwargs):
 
 @require_GET
 def question(request, question_id):
-    # return Http404
+    return Http404
     q = Question.objects.filter(id=question_id)[0]
     a = Answer.objects.filter(question=question_id)[:]
     context = {'question': q, 'answers': a, 'id': question_id}
