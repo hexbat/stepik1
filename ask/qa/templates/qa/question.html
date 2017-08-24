@@ -1,8 +1,6 @@
 {% extends 'qa/base.html' %}
 
-{% block title %}
-{{ block.super }} Question {{ questions.id }}{{ page }}
-{% endblock %}
+{% block title %}{{ block.super }} Question {{ question_id }}{% endblock %}
 
 {% block content %}
 <h1>{{ question.title }}</h1>
