@@ -6,14 +6,13 @@
 <h1>{{ question.title }}</h1>
 <p>{{ question.text }}</p>
 <hr>
-<br>
-bla-bla-bla
-{% endblock %}
-
-{% block content_temp %}
 <ul>
   {% for answer in answers %}
   <li>{{ answer.text }}</li>
   {% endfor %}
 </ul>
+{% endblock %}
+
+{% block content_temp %}
+
 {% endblock %}
