@@ -20,6 +20,7 @@ class QuestionManager(models.Manager):
 
         paginator = Paginator(list,
                               limit)
+        # paginator.baseurl = '/ques'
         try:
             questions = paginator.page(page)
         except PageNotAnInteger:
@@ -27,6 +28,7 @@ class QuestionManager(models.Manager):
         except EmptyPage:
             questions = paginator.page(paginator.num_pages)
         return questions
+
 
 class Question(models.Model):
     title = models.CharField(max_length=100)
